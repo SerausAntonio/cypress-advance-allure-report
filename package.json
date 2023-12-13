@@ -1,0 +1,20 @@
+{
+  "name": "actallure",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cy:test": "cypress run --headed --browser chrome",
+    "cy:open": "cypress open",
+    "cy:allure": "npx cypress run --env allure=true"
+  },
+  "author": "Antonio Seraus",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^8.3.1",
+    "cypress": "^13.6.1"
+  },
+  "dependencies": {
+    "@shelex/cypress-allure-plugin": "^2.40.1"
+  }
+}
