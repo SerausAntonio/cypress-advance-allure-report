@@ -23,14 +23,40 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... }) cy.get('#email').type("pp222@gmail.com");
-Cypress.Commands.add('logMeIn',(email, password)=>{
+Cypress.Commands.add('logMeIn', (email, password) => {
     cy.get('#email').type(email);
     cy.get('#password').type(password);
     cy.get('button#submit').click();
 })
-Cypress.Commands.add('getById',(locator)=>{
+Cypress.Commands.add('getById', (locator) => {
     return cy.get(`#${locator}`)
 })
-Cypress.Commands.add('getByClass', (locator)=>{
+Cypress.Commands.add('getByClass', (locator) => {
     return cy.get(`.${locator}`)
+})
+Cypress.Commands.add('getByTestData', (selector) => {
+
+    return cy.get(`[data-test="${selector}"]`)
+})
+
+Cypress.Commands.add('checkBrokenLinks', () => {
+
+    cy.get('a').each((link) => {
+        cy.request(link.prop('href')).then((response) => {
+            expect(response.status).to.eq(200);
+        });
+    })
+})
+
+Cypress.Commands.add('checkBrokenImages', () => {
+    cy.get('#contcont').within(() => {
+        cy.get('img').each((img) => {
+            cy.request(img.prop('src')).then((response) => {
+                expect(response.status).to.eq(200);
+            });
+
+        })
+    })
+
+
 })
