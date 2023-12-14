@@ -12,5 +12,5 @@ on:
                     node-version: 18
                     name: Install dependencies
                     run: npm ci
-                    name: Run Cypress tests
+                    name: Run Cypress Tests
                     run: npx cypress run
