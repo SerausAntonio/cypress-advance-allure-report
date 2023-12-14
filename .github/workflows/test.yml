@@ -1,7 +1,7 @@
 name: Cypress Tests
 on: 
     push:
-        branches: [master]
+        branches: [main]
 
         jobs:
             test:
@@ -14,4 +14,3 @@ on:
                     run: npm ci
                     name: Run Cypress tests
                     run: npx cypress run
-                    
